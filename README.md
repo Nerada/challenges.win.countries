@@ -1,4 +1,4 @@
-# Countries challenge data
+# Countries challenge
 Analyzing a 2d array.
 
 ## Details
