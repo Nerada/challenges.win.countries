@@ -1,5 +1,5 @@
 # Countries challenge
-Analyzing a 2d array.
+Analyzing a grid.
 
 ## Details
 A grid is devided by countries (numbers), make an application that will show the total regions on the grid.
