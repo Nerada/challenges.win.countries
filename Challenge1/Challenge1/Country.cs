@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace Challenge1
 {
-    class Country
+    internal class Country
     {
         public Country(int code)
         {
@@ -24,7 +24,7 @@ namespace Challenge1
             return Coordinates.Count - GetNeighborAmount(Coordinates);
         }
 
-        private int GetNeighborAmount(List<Coordinate> coordinates)
+        private int GetNeighborAmount(IReadOnlyList<Coordinate> coordinates)
         {
             var neighborList = new List<Coordinate>();
 
@@ -38,33 +38,31 @@ namespace Challenge1
                 }
             }
 
-            neighborList = neighborList.Distinct().ToList();
-
             return neighborList.Count;
         }
 
         private IEnumerable<Coordinate> GetNeighbors(Coordinate coordinate)
         {
-            var delList = new List<Coordinate>();
+            var neighborList = new List<Coordinate>();
             var checkList = new List<Coordinate> { coordinate };
 
             while (checkList.Count != 0)
             {
                 Coordinate checkCoordinate = checkList[0];
 
-                checkList.AddRange(CheckDirectNeighbors(checkList[0]).Where(cl => !delList.Contains(cl)));
+                checkList.AddRange(CheckDirectNeighbors(checkList[0]).Where(cl => !neighborList.Contains(cl)));
 
-                delList.Add(checkCoordinate);
+                neighborList.Add(checkCoordinate);
                 checkList.Remove(checkCoordinate);
             }
 
             // The initial coordinate is not a neighbor
-            delList.RemoveAll(c => c.Equals(coordinate));
+            neighborList.RemoveAll(c => c.Equals(coordinate));
 
-            return delList.Distinct().ToList();
+            return neighborList.Distinct().ToList();
         }
 
-        private List<Coordinate> CheckDirectNeighbors(Coordinate coordinate)
+        private IEnumerable<Coordinate> CheckDirectNeighbors(Coordinate coordinate)
         {
             var neighbors = new List<Coordinate>();
 

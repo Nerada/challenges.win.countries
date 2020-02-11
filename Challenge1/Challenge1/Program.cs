@@ -1,10 +1,16 @@
-﻿using System;
+﻿//-----------------------------------------------
+//      Autor: Ramon Bollen	
+//       File: Challenge1.Program.cs
+// Created on: 202028
+//-----------------------------------------------
+
+using System;
 
 namespace Challenge1
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             var run = new Runnable();
 

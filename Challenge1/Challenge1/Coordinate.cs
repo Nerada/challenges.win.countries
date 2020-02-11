@@ -9,7 +9,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Challenge1
 {
-    class Coordinate : IEquatable<Coordinate>
+    internal class Coordinate : IEquatable<Coordinate>
     {
         public Coordinate(int x, int y)
         {

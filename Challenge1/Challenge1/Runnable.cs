@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace Challenge1
 {
-    class Runnable
+    internal class Runnable
     {
         /// <summary>
         /// Solution(int[][] A) is the given entrance on the challenge website
@@ -19,20 +19,14 @@ namespace Challenge1
         {
             DrawData(A);
 
-            int totalRegionAmount = 0;
-            foreach (Country country in ParseData(A))
-            {
-                totalRegionAmount += country.AmountOfRegionsOfCountry();
-            }
-
-            return totalRegionAmount;
+            return ParseData(A).Sum(country => country.AmountOfRegionsOfCountry());
         }
 
         public int[][] CreateData()
         {
-            int[][] testData = new int[11][];
+            var testData = new int[11][];
 
-            for (int i = 0; i < testData.GetLength(0); i++)
+            for (var i = 0; i < testData.GetLength(0); i++)
             {
                 testData[i] = new int[9];
             }
@@ -53,20 +47,20 @@ namespace Challenge1
             return testData;
         }
 
-        private List<Country> ParseData(int[][] data)
+        private static IEnumerable<Country> ParseData(int[][] data)
         {
             var countries = new List<Country>();
 
-            for (int y = 0; y < data.GetLength(0); y++)
+            for (var y = 0; y < data.GetLength(0); y++)
             {
-                for (int x = 0; x < data[1].Length; x++)
+                for (var x = 0; x < data[1].Length; x++)
                 {
                     int countryCode = data[y][x];
 
                     if (countries.Any(r => r.CountryCode == countryCode))
                     {
-                        var region = countries.First(r => r.CountryCode == countryCode);
-                        region.Coordinates.Add(new Coordinate(x, y));
+                        Country country = countries.First(r => r.CountryCode == countryCode);
+                        country.Coordinates.Add(new Coordinate(x, y));
                     }
                     else
                     {
@@ -80,11 +74,11 @@ namespace Challenge1
             return countries;
         }
 
-        private void DrawData(int[][] data)
+        private static void DrawData(int[][] data)
         {
-            for (int y = 0; y < data.GetLength(0); y++)
+            for (var y = 0; y < data.GetLength(0); y++)
             {
-                for (int x = 0; x < data[1].Length; x++)
+                for (var x = 0; x < data[1].Length; x++)
                 {
                     Console.Write($"{data[y][x].ToString().PadLeft(2, '0')} ");
                 }
