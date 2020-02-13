@@ -9,6 +9,10 @@ using System.Linq;
 
 namespace Challenge1
 {
+    /// <summary>
+    /// A collection of Regions based on given coordinates
+    /// A country is responsible for calculating its regions
+    /// </summary>
     internal class Country
     {
         public Country(int code)
@@ -16,29 +20,47 @@ namespace Challenge1
             CountryCode = code;
         }
 
-        public int CountryCode;
-        public List<Coordinate> Coordinates { get; } = new List<Coordinate>();
+        public int CountryCode { get; }
+
+        private List<Coordinate> Coordinates { get; } = new List<Coordinate>();
+
+        private List<Region> Regions { get; } = new List<Region>();
+
+        public void AddCoordinate(Coordinate coordinate)
+        {
+            Regions.Clear();
+            Coordinates.Add(coordinate);
+        }
 
         public int AmountOfRegionsOfCountry()
         {
-            return Coordinates.Count - GetNeighborAmount(Coordinates);
-        }
-
-        private int GetNeighborAmount(IReadOnlyList<Coordinate> coordinates)
-        {
-            var neighborList = new List<Coordinate>();
-
-            for (int i = coordinates.Count - 1; i >= 0; i--)
+            // Only (re)calculate when new coordinates are present
+            if (Regions.Count == 0)
             {
-                var currentCoordinate = new Coordinate(coordinates[i].X, coordinates[i].Y);
-
-                if (!neighborList.Contains(currentCoordinate))
-                {
-                    neighborList.AddRange(GetNeighbors(currentCoordinate));
-                }
+                CalculateRegions();
             }
 
-            return neighborList.Count;
+            return Regions.Count;
+        }
+
+        private void CalculateRegions()
+        {
+            for (int i = Coordinates.Count - 1; i >= 0; i--)
+            {
+                var currentCoordinate = new Coordinate(Coordinates[i].X, Coordinates[i].Y);
+
+                // Check if the current coordinate is already a neighbor
+                if (Regions.Any(r => r.Coordinates.Contains(currentCoordinate)))
+                {
+                    continue;
+                }
+
+                var region = new Region();
+                region.Coordinates.Add(currentCoordinate);
+                region.Coordinates.AddRange(GetNeighbors(currentCoordinate));
+
+                Regions.Add(region);
+            }
         }
 
         private IEnumerable<Coordinate> GetNeighbors(Coordinate coordinate)

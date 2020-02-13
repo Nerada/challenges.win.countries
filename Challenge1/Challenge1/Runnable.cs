@@ -60,13 +60,13 @@ namespace Challenge1
                     if (countries.Any(r => r.CountryCode == countryCode))
                     {
                         Country country = countries.First(r => r.CountryCode == countryCode);
-                        country.Coordinates.Add(new Coordinate(x, y));
+                        country.AddCoordinate(new Coordinate(x, y));
                     }
                     else
                     {
-                        var newRegion = new Country(countryCode);
-                        newRegion.Coordinates.Add(new Coordinate(x, y));
-                        countries.Add(newRegion);
+                        var newCountry = new Country(countryCode);
+                        newCountry.AddCoordinate(new Coordinate(x, y));
+                        countries.Add(newCountry);
                     }
                 }
             }

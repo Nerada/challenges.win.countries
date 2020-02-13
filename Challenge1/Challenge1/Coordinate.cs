@@ -9,6 +9,9 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Challenge1
 {
+    /// <summary>
+    /// X/Y position comparable by X/Y values
+    /// </summary>
     internal class Coordinate : IEquatable<Coordinate>
     {
         public Coordinate(int x, int y)
