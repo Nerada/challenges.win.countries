@@ -19,7 +19,7 @@ namespace Challenge1
         {
             DrawData(A);
 
-            return ParseData(A).Sum(country => country.AmountOfRegionsOfCountry());
+            return ParseData(A).Sum(country => country.AmountOfRegions());
         }
 
         public int[][] CreateData()

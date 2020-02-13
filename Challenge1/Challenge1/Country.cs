@@ -28,11 +28,16 @@ namespace Challenge1
 
         public void AddCoordinate(Coordinate coordinate)
         {
+            if (coordinate == null || Coordinates.Contains(coordinate))
+            {
+                return;
+            }
+
             Regions.Clear();
             Coordinates.Add(coordinate);
         }
 
-        public int AmountOfRegionsOfCountry()
+        public int AmountOfRegions()
         {
             // Only (re)calculate when new coordinates are present
             if (Regions.Count == 0)
