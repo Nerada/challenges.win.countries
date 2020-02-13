@@ -12,7 +12,7 @@ namespace Challenge1
 {
     internal class Runnable
     {
-        Dictionary<int, string> _fillStrings = new Dictionary<int, string>()
+        private readonly Dictionary<int, string> _fillStrings = new Dictionary<int, string>()
         {
             {1, "··"},
             {2, "##"},
