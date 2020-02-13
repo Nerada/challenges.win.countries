@@ -14,7 +14,7 @@ namespace Challenge1
         {
             var run = new Runnable();
 
-            Console.WriteLine($"{Environment.NewLine}Amount of regions: {run.Solution(run.CreateData())}");
+            Console.WriteLine($"{Environment.NewLine}Total amount of regions: {run.Solution(run.CreateData())}");
             Console.ReadKey();
 
             Environment.Exit(0);
