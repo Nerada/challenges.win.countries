@@ -1,10 +1,8 @@
 ﻿//-----------------------------------------------
-//      Autor: Ramon Bollen	
+//      Author: Ramon Bollen
 //       File: Challenge1.Program.cs
 // Created on: 202028
 //-----------------------------------------------
-
-using System;
 
 namespace Challenge1
 {

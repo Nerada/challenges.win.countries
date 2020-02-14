@@ -1,12 +1,8 @@
 ﻿//-----------------------------------------------
-//      Autor: Ramon Bollen	
+//      Author: Ramon Bollen
 //       File: Challenge1.Runnable.cs
 // Created on: 202028
 //-----------------------------------------------
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Challenge1
 {

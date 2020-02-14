@@ -1,10 +1,8 @@
 ﻿//-----------------------------------------------
-//      Autor: Ramon Bollen	
+//      Author: Ramon Bollen
 //       File: Challenge1.Region.cs
 // Created on: 2020213
 //-----------------------------------------------
-
-using System.Collections.Generic;
 
 namespace Challenge1
 {
