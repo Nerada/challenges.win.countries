@@ -7,8 +7,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Challenge1.Model;
 
+[assembly: InternalsVisibleTo("Challenge1.tests")]
 namespace Challenge1
 {
     internal class Runnable
@@ -20,6 +22,8 @@ namespace Challenge1
         /// </summary>
         public int Solution(int[][] A)
         {
+            if (A == null) { throw new ArgumentNullException(); }
+
             DrawData(A);
 
             IEnumerable<Country> countries = ParseData(A).ToList();
