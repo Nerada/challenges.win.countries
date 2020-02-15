@@ -1,21 +1,21 @@
-﻿//-----------------------------------------------
-//      Author: Ramon Bollen
+﻿// -----------------------------------------------
+//     Author: Ramon Bollen
 //       File: Challenge1.Country.cs
-// Created on: 202028
-//-----------------------------------------------
+// Created on: 20200215
+// -----------------------------------------------
 
-namespace Challenge1
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Challenge1.Model
 {
     /// <summary>
-    /// A collection of Regions based on given coordinates
-    /// A country is responsible for calculating its regions
+    ///     A collection of Regions based on given coordinates
+    ///     A country is responsible for calculating its regions
     /// </summary>
     internal class Country
     {
-        public Country(int code)
-        {
-            CountryCode = code;
-        }
+        public Country(int code) => CountryCode = code;
 
         public int CountryCode { get; }
 
@@ -25,10 +25,7 @@ namespace Challenge1
 
         public void AddCoordinate(Coordinate coordinate)
         {
-            if (coordinate == null || Coordinates.Contains(coordinate))
-            {
-                return;
-            }
+            if (coordinate == null || Coordinates.Contains(coordinate)) { return; }
 
             Regions.Clear();
             Coordinates.Add(coordinate);
@@ -37,10 +34,7 @@ namespace Challenge1
         public int AmountOfRegions()
         {
             // Only (re)calculate when new coordinates are present
-            if (Regions.Count == 0)
-            {
-                CalculateRegions();
-            }
+            if (Regions.Count == 0) { CalculateRegions(); }
 
             return Regions.Count;
         }
@@ -52,10 +46,7 @@ namespace Challenge1
                 var currentCoordinate = new Coordinate(Coordinates[i].X, Coordinates[i].Y);
 
                 // Check if the current coordinate is already a neighbor
-                if (Regions.Any(r => r.Coordinates.Contains(currentCoordinate)))
-                {
-                    continue;
-                }
+                if (Regions.Any(r => r.Coordinates.Contains(currentCoordinate))) { continue; }
 
                 var region = new Region();
                 region.Coordinates.Add(currentCoordinate);
@@ -68,7 +59,7 @@ namespace Challenge1
         private IEnumerable<Coordinate> GetNeighbors(Coordinate coordinate)
         {
             var neighborList = new List<Coordinate>();
-            var checkList = new List<Coordinate> { coordinate };
+            var checkList    = new List<Coordinate> {coordinate};
 
             while (checkList.Count != 0)
             {

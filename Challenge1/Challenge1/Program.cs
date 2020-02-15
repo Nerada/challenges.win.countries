@@ -1,8 +1,10 @@
-﻿//-----------------------------------------------
-//      Author: Ramon Bollen
+﻿// -----------------------------------------------
+//     Author: Ramon Bollen
 //       File: Challenge1.Program.cs
-// Created on: 202028
-//-----------------------------------------------
+// Created on: 20200210
+// -----------------------------------------------
+
+using System;
 
 namespace Challenge1
 {
@@ -12,7 +14,7 @@ namespace Challenge1
         {
             var run = new Runnable();
 
-            Console.WriteLine($"{Environment.NewLine}Total amount of regions: {run.Solution(run.CreateData())}");
+            Console.WriteLine($"{Environment.NewLine}Total amount of regions: {run.Solution(TestData.Get())}");
             Console.ReadKey();
 
             Environment.Exit(0);
