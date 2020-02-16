@@ -1,21 +1,18 @@
 ﻿// -----------------------------------------------
 //     Author: Ramon Bollen
 //       File: Challenge1.TestData.cs
-// Created on: 20200215
+// Created on: 20200216
 // -----------------------------------------------
 
-namespace Challenge1
+using System;
+
+namespace Challenge1.Support
 {
     public static class TestData
     {
-        public static int[][] Get()
+        public static int[][] GetSpecificLayout()
         {
-            var testData = new int[10][];
-
-            for (var i = 0; i < testData.GetLength(0); i++)
-            {
-                testData[i] = new int[10];
-            }
+            int[][] testData = CreateInitialArray(10, 10);
 
             //  0                   1                   2                   3                   4                   5                   6                   7                   8                   9
             testData[0][0] = 1; testData[0][1] = 2; testData[0][2] = 2; testData[0][3] = 2; testData[0][4] = 2; testData[0][5] = 2; testData[0][6] = 2; testData[0][7] = 2; testData[0][8] = 2; testData[0][9] = 2;
@@ -30,6 +27,40 @@ namespace Challenge1
             testData[9][0] = 2; testData[9][1] = 2; testData[9][2] = 2; testData[9][3] = 2; testData[9][4] = 2; testData[9][5] = 2; testData[9][6] = 2; testData[9][7] = 2; testData[9][8] = 2; testData[9][9] = 2;
 
             return testData;
+        }
+
+        public static int[][] GetRandomLayout()
+        {
+            var random            = new Random();
+            var amountOfCountries = 3; //random.Next(3, 11);
+
+            int[][] testData = CreateInitialArray(random.Next(10, 20), random.Next(10, 20));
+
+            int nextCountryCode = random.Next(1, amountOfCountries + 1);
+
+            for (var y = 0; y < testData.Length; y++)
+            {
+                for (var x = 0; x < testData[y].Length; x++)
+                {
+                    if (random.Next(0, 4) == 1)
+                    {
+                        nextCountryCode = random.Next(1, amountOfCountries + 1);
+                    }
+
+                    testData[y][x] = nextCountryCode;
+                }
+            }
+
+            return testData;
+        }
+
+        private static int[][] CreateInitialArray(int x, int y)
+        {
+            var array = new int[x][];
+
+            for (var i = 0; i < array.Length; i++) { array[i] = new int[y]; }
+
+            return array;
         }
     }
 }
