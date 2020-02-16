@@ -36,9 +36,9 @@ namespace Challenge1.tests
         {
             int[][] testArray = CreateInitialArray(1, 1);
 
-            for (var y = 0; y < testArray.Length; y++)
+            foreach (int[] y in testArray)
             {
-                for (var x = 0; x < testArray[y].Length; x++) { testArray[y][x] = 1; }
+                foreach (int x in y) { y[x] = 1; }
             }
 
             Assert.AreEqual(1, _run.Solution(testArray));

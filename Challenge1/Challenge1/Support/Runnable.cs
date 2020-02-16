@@ -1,7 +1,7 @@
 ﻿// -----------------------------------------------
 //     Author: Ramon Bollen
 //       File: Challenge1.Runnable.cs
-// Created on: 20200208
+// Created on: 20200216
 // -----------------------------------------------
 
 using System;
@@ -16,19 +16,8 @@ namespace Challenge1.Support
 {
     internal class Runnable
     {
-        private readonly Dictionary<int, string> _fillStrings = new Dictionary<int, string>
-        {
-            {1, "··"},
-            {2, "##"},
-            {3, "¤¤"},
-            {4, "--"},
-            {5, "@@"},
-            {6, "XX"},
-            {7, "[]"},
-            {8, "**"},
-            {9, "OO"},
-            {10, "II"}
-        };
+        // TODO: Add more than 3 fill strings (maybe do something with ASCII values)
+        private readonly Dictionary<int, string> _fillStrings = new Dictionary<int, string> {{1, "██"}, {2, "┼┼"}, {3, "··"}};
 
         /// <summary>
         ///     Solution(int[][] A) is the given entrance on the challenge website
@@ -49,7 +38,7 @@ namespace Challenge1.Support
 
             foreach (Country country in countries)
             {
-                Console.WriteLine($"Amount of regions of country ({_fillStrings[country.CountryCode]}): {country.AmountOfRegions()}");
+                Console.WriteLine($"Amount of regions of country ({_fillStrings[country.Code]}): {country.AmountOfRegions()}");
             }
 
             return countries.Sum(country => country.AmountOfRegions());
@@ -65,9 +54,9 @@ namespace Challenge1.Support
                 {
                     int countryCode = data[y][x];
 
-                    if (countries.Any(r => r.CountryCode == countryCode))
+                    if (countries.Any(c => c.Code == countryCode))
                     {
-                        Country country = countries.First(r => r.CountryCode == countryCode);
+                        Country country = countries.First(c => c.Code == countryCode);
                         country.AddCoordinate(new Coordinate(x, y));
                     }
                     else
@@ -82,11 +71,11 @@ namespace Challenge1.Support
             return countries;
         }
 
-        private void DrawData(int[][] data)
+        private void DrawData(IReadOnlyList<int[]> data)
         {
-            for (var y = 0; y < data.Length; y++)
+            foreach (int[] y in data)
             {
-                for (var x = 0; x < data[y].Length; x++) { Console.Write($"{_fillStrings[data[y][x]]}"); }
+                foreach (int x in y) { Console.Write($"{_fillStrings[x]}"); }
 
                 Console.WriteLine();
             }

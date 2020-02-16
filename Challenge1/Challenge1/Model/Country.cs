@@ -1,7 +1,7 @@
 ﻿// -----------------------------------------------
 //     Author: Ramon Bollen
 //       File: Challenge1.Country.cs
-// Created on: 20200215
+// Created on: 20200216
 // -----------------------------------------------
 
 using System.Collections.Generic;
@@ -15,9 +15,9 @@ namespace Challenge1.Model
     /// </summary>
     internal class Country
     {
-        public Country(int code) => CountryCode = code;
+        public Country(int code) => Code = code;
 
-        public int CountryCode { get; }
+        public int Code { get; }
 
         private List<Coordinate> Coordinates { get; } = new List<Coordinate>();
 

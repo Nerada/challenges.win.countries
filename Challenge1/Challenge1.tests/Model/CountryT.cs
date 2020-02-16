@@ -21,7 +21,7 @@ namespace Challenge1.tests.Model
         public void No_Coordinates() { Assert.AreEqual(0, _country.AmountOfRegions()); }
 
         [TestMethod]
-        public void Valid_Country_Code() { Assert.AreEqual(42, _country.CountryCode); }
+        public void Valid_Country_Code() { Assert.AreEqual(42, _country.Code); }
 
         [TestMethod]
         public void Can_Handle_Double_Coordinates()

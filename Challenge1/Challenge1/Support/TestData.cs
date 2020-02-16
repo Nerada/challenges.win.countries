@@ -38,16 +38,16 @@ namespace Challenge1.Support
 
             int nextCountryCode = random.Next(1, amountOfCountries + 1);
 
-            for (var y = 0; y < testData.Length; y++)
+            foreach (int[] y in testData)
             {
-                for (var x = 0; x < testData[y].Length; x++)
+                for (var x = 0; x < y.Length; x++)
                 {
                     if (random.Next(0, 4) == 1)
                     {
                         nextCountryCode = random.Next(1, amountOfCountries + 1);
                     }
 
-                    testData[y][x] = nextCountryCode;
+                    y[x] = nextCountryCode;
                 }
             }
 
