@@ -13,6 +13,8 @@ namespace Challenge1
     {
         private static void Main()
         {
+            Console.SetWindowSize(55, 50);
+
             var run = new Runnable();
             string divider = $"--------------------------------------------------";
 
