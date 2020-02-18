@@ -32,7 +32,7 @@ namespace Challenge1.Support
         public static int[][] GetRandomLayout()
         {
             var random            = new Random();
-            var amountOfCountries = 3; //random.Next(3, 11);
+            var amountOfCountries = 4; //random.Next(3, 11);
 
             int[][] testData = CreateInitialArray(random.Next(10, 20), random.Next(10, 20));
 
