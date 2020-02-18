@@ -1,10 +1,11 @@
 ﻿// -----------------------------------------------
 //     Author: Ramon Bollen
 //       File: Challenge1.Program.cs
-// Created on: 20200210
+// Created on: 20200208
 // -----------------------------------------------
 
 using System;
+using System.Text;
 using Challenge1.Support;
 
 namespace Challenge1
@@ -13,18 +14,26 @@ namespace Challenge1
     {
         private static void Main()
         {
+            Console.OutputEncoding = Encoding.Unicode;
             Console.SetWindowSize(55, 50);
 
             var run = new Runnable();
-            string divider = $"--------------------------------------------------";
 
-            Console.WriteLine(divider);
-            Console.WriteLine($"Predefined layout:");
-            Console.WriteLine($"{Environment.NewLine}Total amount of regions: {run.Solution(TestData.GetSpecificLayout())}");
-            Console.WriteLine(divider);
-            Console.WriteLine($"Random layout:");
-            Console.WriteLine($"{Environment.NewLine}Total amount of regions: {run.Solution(TestData.GetRandomLayout())}");
-            Console.WriteLine(divider);
+            int[][] specificData = TestData.GetSpecificLayout();
+
+            Console.WriteLine($"┌────────────────────┐");
+            Console.WriteLine($"│ Predefined layout: │");
+            Console.WriteLine($"├{new string('─', 20)}┴─{new string('─', (specificData[0].Length * 2) - 20)}┐");
+            Console.WriteLine($"{Environment.NewLine}Total amount of regions: {run.Solution(specificData)}");
+            Console.WriteLine();
+
+            int[][] randomData = TestData.GetRandomLayout();
+
+            Console.WriteLine($"┌────────────────┐");
+            Console.WriteLine($"│ Random layout: │");
+            Console.WriteLine($"├{new string('─', 16)}┴─{new string('─', (randomData[0].Length * 2) - 16)}┐");
+            Console.WriteLine($"{Environment.NewLine}Total amount of regions: {run.Solution(randomData)}");
+            Console.WriteLine();
 
             Console.ReadKey();
 

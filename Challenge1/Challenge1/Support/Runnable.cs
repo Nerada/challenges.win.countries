@@ -17,7 +17,7 @@ namespace Challenge1.Support
     internal class Runnable
     {
         // TODO: Add more than 3 fill strings (maybe do something with ASCII values)
-        private readonly Dictionary<int, string> _fillStrings = new Dictionary<int, string> {{1, "██"}, {2, "┼┼"}, {3, "··"},{4, "[]"}};
+        private readonly Dictionary<int, string> _fillStrings = new Dictionary<int, string> {{1, "██"}, {2, "┼┼"}, {3, "··"}, {4, "[]"}};
 
         /// <summary>
         ///     Solution(int[][] A) is the given entrance on the challenge website
@@ -75,12 +75,15 @@ namespace Challenge1.Support
         {
             foreach (int[] y in data)
             {
+                Console.Write("│ ");
                 foreach (int x in y) { Console.Write($"{_fillStrings[x]}"); }
+
+                Console.Write(" │");
 
                 Console.WriteLine();
             }
 
-            Console.WriteLine();
+            Console.WriteLine($"└─{new string('─', data[0].Length * 2)}─┘");
         }
     }
 }
