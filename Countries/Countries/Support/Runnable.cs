@@ -73,6 +73,8 @@ namespace Countries.Support
 
         private void DrawData(IReadOnlyList<int[]> data)
         {
+            if (data == null || data.Count == 0) return;
+
             foreach (int[] y in data)
             {
                 Console.Write("│ ");
