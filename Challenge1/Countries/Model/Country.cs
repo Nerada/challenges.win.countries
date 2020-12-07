@@ -1,13 +1,13 @@
 ﻿// -----------------------------------------------
 //     Author: Ramon Bollen
-//       File: Challenge1.Country.cs
+//       File: Countries.Country.cs
 // Created on: 20200216
 // -----------------------------------------------
 
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Challenge1.Model
+namespace Countries.Model
 {
     /// <summary>
     ///     A collection of Regions based on given coordinates
@@ -25,7 +25,7 @@ namespace Challenge1.Model
 
         public void AddCoordinate(Coordinate coordinate)
         {
-            if (coordinate == null || Coordinates.Contains(coordinate)) { return; }
+            if (coordinate == null || Coordinates.Contains(coordinate)) return;
 
             Regions.Clear();
             Coordinates.Add(coordinate);
@@ -34,7 +34,7 @@ namespace Challenge1.Model
         public int AmountOfRegions()
         {
             // Only (re)calculate when new coordinates are present
-            if (Regions.Count == 0) { CalculateRegions(); }
+            if (Regions.Count == 0) CalculateRegions();
 
             return Regions.Count;
         }
@@ -46,7 +46,7 @@ namespace Challenge1.Model
                 var currentCoordinate = new Coordinate(Coordinates[i].X, Coordinates[i].Y);
 
                 // Check if the current coordinate is already a neighbor
-                if (Regions.Any(r => r.Coordinates.Contains(currentCoordinate))) { continue; }
+                if (Regions.Any(r => r.Coordinates.Contains(currentCoordinate))) continue;
 
                 var region = new Region();
                 region.Coordinates.Add(currentCoordinate);

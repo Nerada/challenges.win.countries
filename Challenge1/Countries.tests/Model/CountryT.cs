@@ -1,13 +1,13 @@
 // -----------------------------------------------
 //     Author: Ramon Bollen
-//       File: Challenge1.tests.CountryT.cs
+//       File: Countries.tests.CountryT.cs
 // Created on: 20200216
 // -----------------------------------------------
 
-using Challenge1.Model;
+using Countries.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Challenge1.tests.Model
+namespace Countries.tests.Model
 {
     [TestClass]
     public class CountryT
@@ -15,13 +15,13 @@ namespace Challenge1.tests.Model
         private Country _country;
 
         [TestInitialize]
-        public void Initializer() { _country = new Country(42); }
+        public void Initializer() => _country = new Country(42);
 
         [TestMethod]
-        public void No_Coordinates() { Assert.AreEqual(0, _country.AmountOfRegions()); }
+        public void No_Coordinates() => Assert.AreEqual(0, _country.AmountOfRegions());
 
         [TestMethod]
-        public void Valid_Country_Code() { Assert.AreEqual(42, _country.Code); }
+        public void Valid_Country_Code() => Assert.AreEqual(42, _country.Code);
 
         [TestMethod]
         public void Can_Handle_Double_Coordinates()

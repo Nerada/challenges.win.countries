@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------
 //     Author: Ramon Bollen
-//       File: Challenge1.Runnable.cs
+//       File: Countries.Runnable.cs
 // Created on: 20200216
 // -----------------------------------------------
 
@@ -8,27 +8,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Challenge1.Model;
+using Countries.Model;
 
-[assembly: InternalsVisibleTo("Challenge1.tests")]
+[assembly: InternalsVisibleTo("Countries.tests")]
 
-namespace Challenge1.Support
+namespace Countries.Support
 {
     internal class Runnable
     {
-        // TODO: Add more than 3 fill strings (maybe do something with ASCII values)
+        // TODO: Add more than 4 fill strings (maybe do something with ASCII values)
         private readonly Dictionary<int, string> _fillStrings = new Dictionary<int, string> {{1, "██"}, {2, "┼┼"}, {3, "··"}, {4, "[]"}};
 
         /// <summary>
         ///     Solution(int[][] A) is the given entrance on the challenge website
         /// </summary>
-        public int Solution(int[][] A)
+        public int Solution(int[][] a)
         {
-            if (A == null) { throw new ArgumentNullException(); }
+            if (a == null) throw new ArgumentNullException();
 
-            DrawData(A);
+            DrawData(a);
 
-            IEnumerable<Country> countries = ParseData(A).ToList();
+            IEnumerable<Country> countries = ParseData(a).ToList();
 
             if (countries.Count() == 1)
             {
@@ -76,7 +76,8 @@ namespace Challenge1.Support
             foreach (int[] y in data)
             {
                 Console.Write("│ ");
-                foreach (int x in y) { Console.Write($"{_fillStrings[x]}"); }
+
+                foreach (int x in y) Console.Write($"{_fillStrings[x]}");
 
                 Console.Write(" │");
 

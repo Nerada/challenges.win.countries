@@ -6,9 +6,9 @@
 
 using System;
 using System.Text;
-using Challenge1.Support;
+using Countries.Support;
 
-namespace Challenge1
+namespace Countries
 {
     internal static class Program
     {

@@ -6,7 +6,7 @@
 
 using System;
 
-namespace Challenge1.Support
+namespace Countries.Support
 {
     public static class TestData
     {
@@ -14,6 +14,7 @@ namespace Challenge1.Support
         {
             int[][] testData = CreateInitialArray(10, 10);
 
+            // ReSharper disable MultipleStatementsOnOneLine
             //  0                   1                   2                   3                   4                   5                   6                   7                   8                   9
             testData[0][0] = 1; testData[0][1] = 2; testData[0][2] = 2; testData[0][3] = 2; testData[0][4] = 2; testData[0][5] = 2; testData[0][6] = 2; testData[0][7] = 2; testData[0][8] = 2; testData[0][9] = 2;
             testData[1][0] = 1; testData[1][1] = 1; testData[1][2] = 2; testData[1][3] = 1; testData[1][4] = 1; testData[1][5] = 1; testData[1][6] = 1; testData[1][7] = 1; testData[1][8] = 1; testData[1][9] = 2;
@@ -58,7 +59,10 @@ namespace Challenge1.Support
         {
             var array = new int[x][];
 
-            for (var i = 0; i < array.Length; i++) { array[i] = new int[y]; }
+            for (var i = 0; i < array.Length; i++)
+            {
+                array[i] = new int[y];
+            }
 
             return array;
         }

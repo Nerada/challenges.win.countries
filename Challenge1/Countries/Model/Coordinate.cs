@@ -1,13 +1,13 @@
 ﻿// -----------------------------------------------
 //     Author: Ramon Bollen
-//       File: Challenge1.Coordinate.cs
+//       File: Countries.Coordinate.cs
 // Created on: 20200215
 // -----------------------------------------------
 
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Challenge1.Model
+namespace Countries.Model
 {
     /// <summary>
     ///     X/Y position comparable by X/Y values

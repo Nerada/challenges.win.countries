@@ -1,14 +1,14 @@
 // -----------------------------------------------
 //     Author: Ramon Bollen
-//       File: Challenge1.tests.RunnableT.cs
+//       File: Countries.tests.RunnableT.cs
 // Created on: 20200216
 // -----------------------------------------------
 
 using System;
-using Challenge1.Support;
+using Countries.Support;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Challenge1.tests
+namespace Countries.tests
 {
     [TestClass]
     public class RunnableT
@@ -16,20 +16,20 @@ namespace Challenge1.tests
         private Runnable _run;
 
         [TestInitialize]
-        public void Initializer() { _run = new Runnable(); }
+        public void Initializer() => _run = new Runnable();
 
         /// <summary>
         ///     Integration Test, check valid output based on specified region.
         /// </summary>
         [TestMethod]
-        public void Has_Valid_Solution() { Assert.AreEqual(8, _run.Solution(TestData.GetSpecificLayout())); }
+        public void Has_Valid_Solution() => Assert.AreEqual(8, _run.Solution(TestData.GetSpecificLayout()));
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Exception_On_Null() { _run.Solution(null); }
+        public void Exception_On_Null() => _run.Solution(null);
 
         [TestMethod]
-        public void Valid_Output_On_Empty_Input() { Assert.AreEqual(0, _run.Solution(Array.Empty<int[]>())); }
+        public void Valid_Output_On_Empty_Input() => Assert.AreEqual(0, _run.Solution(Array.Empty<int[]>()));
 
         [TestMethod]
         public void Valid_Output_On_Single_Value_Input()
@@ -38,7 +38,10 @@ namespace Challenge1.tests
 
             foreach (int[] y in testArray)
             {
-                foreach (int x in y) { y[x] = 1; }
+                foreach (int x in y)
+                {
+                    y[x] = 1;
+                }
             }
 
             Assert.AreEqual(1, _run.Solution(testArray));
@@ -48,7 +51,10 @@ namespace Challenge1.tests
         {
             var array = new int[x][];
 
-            for (var i = 0; i < array.Length; i++) { array[i] = new int[y]; }
+            for (var i = 0; i < array.Length; i++)
+            {
+                array[i] = new int[y];
+            }
 
             return array;
         }

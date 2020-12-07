@@ -1,12 +1,12 @@
 ﻿// -----------------------------------------------
 //     Author: Ramon Bollen
-//       File: Challenge1.Region.cs
+//       File: Countries.Region.cs
 // Created on: 20200215
 // -----------------------------------------------
 
 using System.Collections.Generic;
 
-namespace Challenge1.Model
+namespace Countries.Model
 {
     /// <summary>
     ///     A collection of coordinates that form a region (are neighbors of each other)
