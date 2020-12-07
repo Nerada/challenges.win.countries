@@ -1,5 +1,5 @@
 # Countries challenge
-Analyzing a grid.
+(Harvest_001) Analyzing a grid.
 
 ## Details
 A grid is divided into countries (numbers). Make an application that will show the total amount of regions on the grid.
