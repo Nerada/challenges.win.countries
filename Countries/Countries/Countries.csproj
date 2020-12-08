@@ -3,6 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
+    <Authors>Ramon Bollen</Authors>
+    <Company>RamBo</Company>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
