@@ -13,7 +13,7 @@ namespace Countries.tests
     [TestClass]
     public class RunnableT
     {
-        private Runnable _run;
+        private Runnable _run = new Runnable();
 
         [TestInitialize]
         public void Initializer() => _run = new Runnable();
@@ -23,10 +23,6 @@ namespace Countries.tests
         /// </summary>
         [TestMethod]
         public void Has_Valid_Solution() => Assert.AreEqual(8, _run.Solution(TestData.GetSpecificLayout()));
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void Exception_On_Null() => _run.Solution(null);
 
         [TestMethod]
         public void Valid_Output_On_Empty_Input() => Assert.AreEqual(0, _run.Solution(Array.Empty<int[]>()));

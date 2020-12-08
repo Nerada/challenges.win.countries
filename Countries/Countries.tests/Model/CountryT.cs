@@ -12,7 +12,7 @@ namespace Countries.tests.Model
     [TestClass]
     public class CountryT
     {
-        private Country _country;
+        private Country _country = new Country(42);
 
         [TestInitialize]
         public void Initializer() => _country = new Country(42);

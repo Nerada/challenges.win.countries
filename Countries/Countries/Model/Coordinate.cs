@@ -5,7 +5,6 @@
 // -----------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Countries.Model
 {
@@ -23,7 +22,7 @@ namespace Countries.Model
         public int X { get; }
         public int Y { get; }
 
-        public bool Equals([DisallowNull] Coordinate other) => X.Equals(other?.X) && Y.Equals(other?.Y);
+        public bool Equals(Coordinate? other) => X.Equals(other?.X) && Y.Equals(other.Y);
 
         public override int GetHashCode() => X + Y;
     }

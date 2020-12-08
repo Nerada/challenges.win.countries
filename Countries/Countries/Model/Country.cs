@@ -25,7 +25,7 @@ namespace Countries.Model
 
         public void AddCoordinate(Coordinate coordinate)
         {
-            if (coordinate == null || Coordinates.Contains(coordinate)) return;
+            if (Coordinates.Contains(coordinate)) return;
 
             Regions.Clear();
             Coordinates.Add(coordinate);
