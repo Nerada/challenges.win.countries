@@ -1,6 +1,4 @@
-#[![Build Status](https://dev.azure.com/nerada/GitHub/_apis/build/status/Nerada.challenges_countries?branchName=master)](https://dev.azure.com/nerada/GitHub/_build/latest?definitionId=4&branchName=master)
-
-# Countries challenge
+# Countries challenge [![Build Status](https://dev.azure.com/nerada/GitHub/_apis/build/status/Nerada.challenges_countries?branchName=master)](https://dev.azure.com/nerada/GitHub/_build/latest?definitionId=4&branchName=master)
 (Harvest_001) Analyzing a grid.
 
 ## Details
