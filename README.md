@@ -1,4 +1,5 @@
 # Countries challenge [![Build Status](https://dev.azure.com/nerada/GitHub/_apis/build/status/Nerada.challenges_countries?branchName=master)](https://dev.azure.com/nerada/GitHub/_build/latest?definitionId=4&branchName=master)
+(Harvest_001) Analyzing a grid.
 
 ## Details
 A grid is divided into countries (numbers). Make an application that will show the total amount of regions on the grid.
