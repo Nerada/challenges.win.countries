@@ -1,7 +1,7 @@
 ﻿// -----------------------------------------------
 //     Author: Ramon Bollen
-//       File: Countries.Coordinate.cs
-// Created on: 20200215
+//      File: Countries.Coordinate.cs
+// Created on: 20201207
 // -----------------------------------------------
 
 using System;
