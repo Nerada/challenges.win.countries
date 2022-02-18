@@ -15,13 +15,13 @@ namespace Countries.Model
     /// </summary>
     internal class Country
     {
-        public Country(int code) => Code = code;
+        public Country(int countryCode) => CountryCode = countryCode;
 
-        public int Code { get; }
+        public int CountryCode { get; }
 
-        private List<Coordinate> Coordinates { get; } = new List<Coordinate>();
+        private List<Coordinate> Coordinates { get; } = new();
 
-        private List<Region> Regions { get; } = new List<Region>();
+        private List<Region> Regions { get; } = new();
 
         public void AddCoordinate(Coordinate coordinate)
         {
@@ -31,12 +31,15 @@ namespace Countries.Model
             Coordinates.Add(coordinate);
         }
 
-        public int AmountOfRegions()
+        public int NumberOfRegions
         {
-            // Only (re)calculate when new coordinates are present
-            if (Regions.Count == 0) CalculateRegions();
+            get
+            {
+                // Coordinates are added since last region calculation
+                if (Regions.Count == 0) CalculateRegions();
 
-            return Regions.Count;
+                return Regions.Count;
+            }
         }
 
         private void CalculateRegions()

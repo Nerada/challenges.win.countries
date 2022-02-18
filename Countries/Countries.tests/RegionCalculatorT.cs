@@ -1,31 +1,32 @@
 // -----------------------------------------------
 //     Author: Ramon Bollen
-//      File: Countries.tests.RunnableT.cs
+//      File: Countries.tests.RegionCalculatorT.cs
 // Created on: 20201207
 // -----------------------------------------------
 
 using System;
+using System.Linq;
 using Countries.Support;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Countries.tests
 {
     [TestClass]
-    public class RunnableT
+    public class RegionCalculatorT
     {
-        private Runnable _run = new Runnable();
+        private RegionCalculator _regionCalculator = new();
 
         [TestInitialize]
-        public void Initializer() => _run = new Runnable();
+        public void Initializer() => _regionCalculator = new RegionCalculator();
 
         /// <summary>
         ///     Integration Test, check valid output based on specified region.
         /// </summary>
         [TestMethod]
-        public void Has_Valid_Solution() => Assert.AreEqual(8, _run.Solution(TestData.GetSpecificLayout()));
+        public void Has_Valid_Solution() => Assert.AreEqual(8, _regionCalculator.Calculate(TestData.GetSpecificLayout()).Results.Sum(c => c.AmountOfRegions));
 
         [TestMethod]
-        public void Valid_Output_On_Empty_Input() => Assert.AreEqual(0, _run.Solution(Array.Empty<int[]>()));
+        public void Valid_Output_On_Empty_Input() => Assert.AreEqual(0, _regionCalculator.Calculate(Array.Empty<int[]>()).Results.Sum(c => c.AmountOfRegions));
 
         [TestMethod]
         public void Valid_Output_On_Single_Value_Input()
@@ -40,7 +41,7 @@ namespace Countries.tests
                 }
             }
 
-            Assert.AreEqual(1, _run.Solution(testArray));
+            Assert.AreEqual(1, _regionCalculator.Calculate(testArray).Results.Sum(c => c.AmountOfRegions));
         }
 
         private static int[][] CreateInitialArray(int x, int y)

@@ -12,16 +12,16 @@ namespace Countries.tests.Model
     [TestClass]
     public class CountryT
     {
-        private Country _country = new Country(42);
+        private Country _country = new(countryCode: 42);
 
         [TestInitialize]
-        public void Initializer() => _country = new Country(42);
+        public void Initializer() => _country = new Country(countryCode: 42);
 
         [TestMethod]
-        public void No_Coordinates() => Assert.AreEqual(0, _country.AmountOfRegions());
+        public void No_Coordinates() => Assert.AreEqual(0, _country.NumberOfRegions);
 
         [TestMethod]
-        public void Valid_Country_Code() => Assert.AreEqual(42, _country.Code);
+        public void Valid_Country_Code() => Assert.AreEqual(42, _country.CountryCode);
 
         [TestMethod]
         public void Can_Handle_Double_Coordinates()
@@ -30,7 +30,7 @@ namespace Countries.tests.Model
             _country.AddCoordinate(new Coordinate(1, 1));
             _country.AddCoordinate(new Coordinate(1, 1));
 
-            Assert.AreEqual(1, _country.AmountOfRegions());
+            Assert.AreEqual(1, _country.NumberOfRegions);
         }
 
         [TestMethod]
@@ -40,7 +40,7 @@ namespace Countries.tests.Model
             _country.AddCoordinate(new Coordinate(0, 1));
             _country.AddCoordinate(new Coordinate(2, 0));
 
-            Assert.AreEqual(2, _country.AmountOfRegions());
+            Assert.AreEqual(2, _country.NumberOfRegions);
         }
 
         [TestMethod]
@@ -50,7 +50,7 @@ namespace Countries.tests.Model
             _country.AddCoordinate(new Coordinate(-1, -2));
             _country.AddCoordinate(new Coordinate(-3, -1));
 
-            Assert.AreEqual(2, _country.AmountOfRegions());
+            Assert.AreEqual(2, _country.NumberOfRegions);
         }
 
         [TestMethod]
@@ -64,7 +64,7 @@ namespace Countries.tests.Model
 
             _country.AddCoordinate(new Coordinate(-3, -3));
 
-            Assert.AreEqual(3, _country.AmountOfRegions());
+            Assert.AreEqual(3, _country.NumberOfRegions);
         }
     }
 }
