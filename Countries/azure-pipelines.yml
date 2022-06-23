@@ -24,6 +24,6 @@ stages:
   - template: templates/main.yml@devops.pipelines
     parameters:
       solutionName: 'Countries'
-      buildPlatform: 'Any CPU'
+      buildFolderName: 'bin'
       buildConfiguration: 'Release'
       version: '0.1.0.$(Build.BuildId)'

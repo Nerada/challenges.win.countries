@@ -8,13 +8,15 @@ using System;
 
 // ReSharper disable MultipleStatementsOnOneLine
 
-namespace Countries.Support
+namespace Countries.Support;
+
+public static class TestData
 {
-    public static class TestData
+    public static int[][] GetSpecificLayout()
     {
-        public static int[][] GetSpecificLayout()
-        {
-            int[][] testData = CreateInitialArray(10, 10);
+        int[][] testData = CreateInitialArray(10, 10);
+
+// @formatter:off
 
             //  0                   1                   2                   3                   4                   5                   6                   7                   8                   9
             testData[0][0] = 1; testData[0][1] = 2; testData[0][2] = 2; testData[0][3] = 2; testData[0][4] = 2; testData[0][5] = 2; testData[0][6] = 2; testData[0][7] = 2; testData[0][8] = 2; testData[0][9] = 2;
@@ -28,44 +30,45 @@ namespace Countries.Support
             testData[8][0] = 2; testData[8][1] = 2; testData[8][2] = 2; testData[8][3] = 3; testData[8][4] = 3; testData[8][5] = 2; testData[8][6] = 3; testData[8][7] = 1; testData[8][8] = 2; testData[8][9] = 2;
             testData[9][0] = 2; testData[9][1] = 2; testData[9][2] = 2; testData[9][3] = 2; testData[9][4] = 2; testData[9][5] = 2; testData[9][6] = 2; testData[9][7] = 2; testData[9][8] = 2; testData[9][9] = 2;
 
-            return testData;
-        }
+// @formatter:on
 
-        public static int[][] GetRandomLayout()
+        return testData;
+    }
+
+    public static int[][] GetRandomLayout()
+    {
+        Random random            = new();
+        int    numberOfCountries = 4; // TODO: random.Next(3, 11)
+
+        int[][] testData = CreateInitialArray(random.Next(10, 20), random.Next(10, 20));
+
+        int nextCountryCode = random.Next(1, numberOfCountries + 1);
+
+        foreach (int[] y in testData)
         {
-            var random            = new Random();
-            var numberOfCountries = 4; // TODO: random.Next(3, 11)
-
-            int[][] testData = CreateInitialArray(random.Next(10, 20), random.Next(10, 20));
-
-            int nextCountryCode = random.Next(1, numberOfCountries + 1);
-
-            foreach (int[] y in testData)
+            for (int x = 0; x < y.Length; x++)
             {
-                for (var x = 0; x < y.Length; x++)
+                if (random.Next(0, 4) == 1)
                 {
-                    if (random.Next(0, 4) == 1)
-                    {
-                        nextCountryCode = random.Next(1, numberOfCountries + 1);
-                    }
-
-                    y[x] = nextCountryCode;
+                    nextCountryCode = random.Next(1, numberOfCountries + 1);
                 }
-            }
 
-            return testData;
+                y[x] = nextCountryCode;
+            }
         }
 
-        private static int[][] CreateInitialArray(int x, int y)
+        return testData;
+    }
+
+    private static int[][] CreateInitialArray(int x, int y)
+    {
+        int[][] array = new int[x][];
+
+        for (int i = 0; i < array.Length; i++)
         {
-            var array = new int[x][];
-
-            for (var i = 0; i < array.Length; i++)
-            {
-                array[i] = new int[y];
-            }
-
-            return array;
+            array[i] = new int[y];
         }
+
+        return array;
     }
 }

@@ -6,13 +6,12 @@
 
 using System.Collections.Generic;
 
-namespace Countries.Model
+namespace Countries.Model;
+
+/// <summary>
+///     A collection of coordinates that form a region (are neighbors of each other)
+/// </summary>
+public class Region
 {
-    /// <summary>
-    ///     A collection of coordinates that form a region (are neighbors of each other)
-    /// </summary>
-    public class Region
-    {
-        public List<Coordinate> Coordinates { get; } = new();
-    }
+    public List<Coordinate> Coordinates { get; } = new();
 }
