@@ -15,15 +15,15 @@ resources:
     - repository: devops.pipelines
       type: github
       name: Nerada/devops.pipelines
-
-extends:
-  template: templates/main.yml@devops.pipelines
-  parameters:
-      solutionName: 'Countries'
-      version: '0.1.0.$(Build.BuildId)'
+      endpoint: Nerada #Setup in Azure=>Project settings=>Service connections
 
 stages:
 - stage: rl0_stage
-  displayName: 'Release stage 0'
+  displayName: 'RL0 - Code quality checks & build'
   jobs:
   - template: templates/main.yml@devops.pipelines
+    parameters:
+      solutionName: 'Countries'
+      buildPlatform: 'Any CPU'
+      buildConfiguration: 'Release'
+      version: '0.1.0.$(Build.BuildId)'
