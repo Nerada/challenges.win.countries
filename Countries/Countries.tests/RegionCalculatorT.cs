@@ -7,6 +7,7 @@
 using System;
 using System.Linq;
 using Countries.Support;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Countries.tests;
@@ -23,10 +24,10 @@ public class RegionCalculatorT
     ///     Integration Test, check valid output based on specified region.
     /// </summary>
     [TestMethod]
-    public void Has_Valid_Solution() => Assert.AreEqual(8, _regionCalculator.Calculate(TestData.GetSpecificLayout()).Results.Sum(c => c.AmountOfRegions));
+    public void Has_Valid_Solution() => _regionCalculator.Calculate(TestData.GetSpecificLayout()).Results.Sum(c => c.AmountOfRegions).Should().Be(8);
 
     [TestMethod]
-    public void Valid_Output_On_Empty_Input() => Assert.AreEqual(0, _regionCalculator.Calculate(Array.Empty<int[]>()).Results.Sum(c => c.AmountOfRegions));
+    public void Valid_Output_On_Empty_Input() => _regionCalculator.Calculate(Array.Empty<int[]>()).Results.Sum(c => c.AmountOfRegions).Should().Be(0);
 
     [TestMethod]
     public void Valid_Output_On_Single_Value_Input()
@@ -41,7 +42,7 @@ public class RegionCalculatorT
             }
         }
 
-        Assert.AreEqual(1, _regionCalculator.Calculate(testArray).Results.Sum(c => c.AmountOfRegions));
+        _regionCalculator.Calculate(testArray).Results.Sum(c => c.AmountOfRegions).Should().Be(1);
     }
 
     private static int[][] CreateInitialArray(int x, int y)

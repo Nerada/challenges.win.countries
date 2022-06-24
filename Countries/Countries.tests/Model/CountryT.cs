@@ -5,6 +5,7 @@
 // -----------------------------------------------
 
 using Countries.Model;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Countries.tests.Model;
@@ -30,7 +31,7 @@ public class CountryT
         _country.AddCoordinate(new Coordinate(1, 1));
         _country.AddCoordinate(new Coordinate(1, 1));
 
-        Assert.AreEqual(1, _country.NumberOfRegions);
+        _country.NumberOfRegions.Should().Be(1);
     }
 
     [TestMethod]
@@ -40,7 +41,7 @@ public class CountryT
         _country.AddCoordinate(new Coordinate(0, 1));
         _country.AddCoordinate(new Coordinate(2, 0));
 
-        Assert.AreEqual(2, _country.NumberOfRegions);
+        _country.NumberOfRegions.Should().Be(2);
     }
 
     [TestMethod]
@@ -50,7 +51,7 @@ public class CountryT
         _country.AddCoordinate(new Coordinate(-1, -2));
         _country.AddCoordinate(new Coordinate(-3, -1));
 
-        Assert.AreEqual(2, _country.NumberOfRegions);
+        _country.NumberOfRegions.Should().Be(2);
     }
 
     [TestMethod]
@@ -64,6 +65,6 @@ public class CountryT
 
         _country.AddCoordinate(new Coordinate(-3, -3));
 
-        Assert.AreEqual(3, _country.NumberOfRegions);
+        _country.NumberOfRegions.Should().Be(3);
     }
 }
