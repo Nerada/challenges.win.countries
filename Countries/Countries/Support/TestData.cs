@@ -1,7 +1,7 @@
 ﻿// -----------------------------------------------
 //     Author: Ramon Bollen
 //      File: Countries.TestData.cs
-// Created on: 20201207
+// Created on: 20220623
 // -----------------------------------------------
 
 using System;
@@ -48,10 +48,7 @@ public static class TestData
         {
             for (int x = 0; x < y.Length; x++)
             {
-                if (random.Next(0, 4) == 1)
-                {
-                    nextCountryCode = random.Next(1, numberOfCountries + 1);
-                }
+                if (random.Next(0, 4) == 1) nextCountryCode = random.Next(1, numberOfCountries + 1);
 
                 y[x] = nextCountryCode;
             }
@@ -64,10 +61,7 @@ public static class TestData
     {
         int[][] array = new int[x][];
 
-        for (int i = 0; i < array.Length; i++)
-        {
-            array[i] = new int[y];
-        }
+        for (int i = 0; i < array.Length; i++) { array[i] = new int[y]; }
 
         return array;
     }

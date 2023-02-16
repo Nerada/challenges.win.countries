@@ -1,7 +1,7 @@
 ﻿// -----------------------------------------------
 //     Author: Ramon Bollen
 //      File: Countries.Country.cs
-// Created on: 20201207
+// Created on: 20220623
 // -----------------------------------------------
 
 using System.Collections.Generic;
@@ -22,30 +22,24 @@ internal class Country
 
     public int CountryCode { get; }
 
-    private List<Coordinate> Coordinates { get; } = new();
-
-    private List<Region> Regions { get; } = new();
-
     public int NumberOfRegions
     {
         get
         {
             // Coordinates are added since last region calculation
-            if (Regions.Count == 0)
-            {
-                CalculateRegions();
-            }
+            if (Regions.Count == 0) CalculateRegions();
 
             return Regions.Count;
         }
     }
 
+    private List<Coordinate> Coordinates { get; } = new();
+
+    private List<Region> Regions { get; } = new();
+
     public void AddCoordinate(Coordinate coordinate)
     {
-        if (Coordinates.Contains(coordinate))
-        {
-            return;
-        }
+        if (Coordinates.Contains(coordinate)) return;
 
         Regions.Clear();
         Coordinates.Add(coordinate);
@@ -58,10 +52,7 @@ internal class Country
             Coordinate currentCoordinate = new(Coordinates[i].X, Coordinates[i].Y);
 
             // Check if the current coordinate is already a neighbor
-            if (Regions.Any(r => r.Coordinates.Contains(currentCoordinate)))
-            {
-                continue;
-            }
+            if (Regions.Any(r => r.Coordinates.Contains(currentCoordinate))) continue;
 
             Region region = new();
             region.Coordinates.Add(currentCoordinate);
@@ -97,28 +88,16 @@ internal class Country
         List<Coordinate> neighbors = new();
 
         // Right
-        if (Coordinates.Any(c => c.X == coordinate.X + 1 && c.Y == coordinate.Y))
-        {
-            neighbors.Add(new Coordinate(coordinate.X + 1, coordinate.Y));
-        }
+        if (Coordinates.Any(c => c.X == coordinate.X + 1 && c.Y == coordinate.Y)) neighbors.Add(new Coordinate(coordinate.X + 1, coordinate.Y));
 
         // Left
-        if (Coordinates.Any(c => c.X == coordinate.X - 1 && c.Y == coordinate.Y))
-        {
-            neighbors.Add(new Coordinate(coordinate.X - 1, coordinate.Y));
-        }
+        if (Coordinates.Any(c => c.X == coordinate.X - 1 && c.Y == coordinate.Y)) neighbors.Add(new Coordinate(coordinate.X - 1, coordinate.Y));
 
         // Up
-        if (Coordinates.Any(c => c.X == coordinate.X && c.Y == coordinate.Y + 1))
-        {
-            neighbors.Add(new Coordinate(coordinate.X, coordinate.Y + 1));
-        }
+        if (Coordinates.Any(c => c.X == coordinate.X && c.Y == coordinate.Y + 1)) neighbors.Add(new Coordinate(coordinate.X, coordinate.Y + 1));
 
         // Down
-        if (Coordinates.Any(c => c.X == coordinate.X && c.Y == coordinate.Y - 1))
-        {
-            neighbors.Add(new Coordinate(coordinate.X, coordinate.Y - 1));
-        }
+        if (Coordinates.Any(c => c.X == coordinate.X && c.Y == coordinate.Y - 1)) neighbors.Add(new Coordinate(coordinate.X, coordinate.Y - 1));
 
         return neighbors;
     }

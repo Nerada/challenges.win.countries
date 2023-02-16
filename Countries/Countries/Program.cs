@@ -1,7 +1,7 @@
 ﻿// -----------------------------------------------
 //     Author: Ramon Bollen
 //      File: Countries.Program.cs
-// Created on: 20201207
+// Created on: 20220623
 // -----------------------------------------------
 
 using System;
@@ -29,10 +29,7 @@ internal static class Program
 
         int randomRuns = 1;
 
-        while (Console.ReadKey().Key != ConsoleKey.Escape)
-        {
-            RandomRun(++randomRuns);
-        }
+        while (Console.ReadKey().Key != ConsoleKey.Escape) { RandomRun(++randomRuns); }
 
         Environment.Exit(0);
     }
@@ -46,15 +43,9 @@ internal static class Program
 
     private static void WriteResults(CalculationSummary summary)
     {
-        if (summary.Results.Length == 1)
-        {
-            Console.WriteLine("Only one country found!");
-        }
+        if (summary.Results.Length == 1) Console.WriteLine("Only one country found!");
 
-        foreach ((int countryCode, int regions) in summary.Results)
-        {
-            Console.WriteLine($"Amount of regions of country ({Drawing.CountryFlags[countryCode]}): {regions}");
-        }
+        foreach ((int countryCode, int regions) in summary.Results) { Console.WriteLine($"Amount of regions of country ({Drawing.CountryFlags[countryCode]}): {regions}"); }
 
         Console.WriteLine($"{Environment.NewLine}Total amount of regions: {summary.Results.Sum(result => result.AmountOfRegions)}");
         Console.WriteLine();

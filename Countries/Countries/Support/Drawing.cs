@@ -1,7 +1,7 @@
 ﻿// -----------------------------------------------
 //     Author: Ramon Bollen
 //      File: Countries.Drawing.cs
-// Created on: 20201207
+// Created on: 20220623
 // -----------------------------------------------
 
 using System;
@@ -31,19 +31,13 @@ internal class Drawing
 
     private void DrawData(IReadOnlyList<int[]> data)
     {
-        if (data.Count == 0)
-        {
-            return;
-        }
+        if (data.Count == 0) return;
 
         foreach (int[] y in data)
         {
             Console.Write("│ ");
 
-            foreach (int x in y)
-            {
-                Console.Write($"{CountryFlags[x]}");
-            }
+            foreach (int x in y) { Console.Write($"{CountryFlags[x]}"); }
 
             Console.Write(" │");
 

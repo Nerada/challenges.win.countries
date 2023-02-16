@@ -1,7 +1,7 @@
 ﻿// -----------------------------------------------
 //     Author: Ramon Bollen
 //      File: Countries.RegionCalculator.cs
-// Created on: 20201207
+// Created on: 20220623
 // -----------------------------------------------
 
 using System.Collections.Generic;
@@ -24,11 +24,11 @@ public class RegionCalculator
                      Justification = "Challenge made this parameter mandatory")]
     public CalculationSummary Calculate(int[][] a) => new(ParseData(a).ConvertAll(c => (c.CountryCode, AmountOfRegions: c.NumberOfRegions)).ToImmutableArray());
 
-    private static List<Country> ParseData(int[][] data)
+    private static List<Country> ParseData(IReadOnlyList<int[]> data)
     {
         List<Country> countries = new();
 
-        for (int y = 0; y < data.Length; y++)
+        for (int y = 0; y < data.Count; y++)
         {
             for (int x = 0; x < data[y].Length; x++)
             {
