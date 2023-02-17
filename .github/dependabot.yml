@@ -6,7 +6,12 @@
 version: 2
 updates:
   - package-ecosystem: nuget
-    directory: "/"
+    directory: "/Countries/Countries"
     schedule:
       interval: weekly
-    open-pull-requests-limit: 5
+    rebase-strategy: auto
+  - package-ecosystem: nuget
+    directory: "/Countries/Countries.tests"
+    schedule:
+      interval: weekly
+    rebase-strategy: auto
